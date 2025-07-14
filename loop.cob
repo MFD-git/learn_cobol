@@ -1,0 +1,19 @@
+       IDENTIFICATION DIVISION.
+       PROGRAM-ID. LOOP.
+
+       DATA DIVISION.
+       WORKING-STORAGE SECTION.
+       01 I PIC 9(2).
+       01 STUDENT-SCORES.
+           05 SCORE PIC 9(3) OCCURS 5 TIMES.
+       
+       PROCEDURE DIVISION.
+           MOVE 100 TO SCORE(1)
+           MOVE 200 TO SCORE(2)
+           MOVE 300 TO SCORE(3)
+           MOVE 400 TO SCORE(4)
+           MOVE 500 TO SCORE(5)
+           PERFORM VARYING I FROM 1 BY 1 UNTIL I > 5
+               DISPLAY "SCORE: " SCORE(I)
+           END-PERFORM.
+           STOP RUN.

@@ -1,0 +1,48 @@
+       IDENTIFICATION DIVISION.
+       PROGRAM-ID. A.
+       ENVIRONMENT DIVISION.
+       INPUT-OUTPUT SECTION.
+       FILE-CONTROL.
+           SELECT STUDENT-FILE ASSIGN TO './A.txt'
+               ORGANIZATION IS LINE SEQUENTIAL.
+
+
+       DATA DIVISION.
+       FILE SECTION.
+
+       FD STUDENT-FILE.
+       01 STUDENT-REC.
+           05 STU-ID PIC X(4).
+           05 STU-SCORE PIC 9(2).
+       WORKING-STORAGE SECTION.
+       01 EOF-STUDENT PIC X VALUE 'N'.
+       01 STU-COUNT PIC 9(2).
+       01 I PIC 9(2).
+
+       01 STUDENT-TABLE.
+           03 STUDENTS OCCURS 10 TIMES.
+               05 STU-ID-ARR PIC X(4).
+               05 STU-SCORE-ARR PIC 9(2).
+
+
+
+       PROCEDURE DIVISION.
+       MAIN-PROCESS.
+           OPEN INPUT STUDENT-FILE.
+           
+           PERFORM VARYING STU-COUNT FROM 1 BY 1 UNTIL EOF-STUDENT = 'Y'
+               READ STUDENT-FILE AT END MOVE 'Y' TO EOF-STUDENT
+               NOT AT END
+                   MOVE STU-ID TO STU-ID-ARR(STU-COUNT)
+                   MOVE STU-SCORE TO STU-SCORE-ARR(STU-COUNT)
+
+           END-PERFORM.
+           CLOSE STUDENT-FILE.
+      
+          
+           PERFORM VARYING I FROM 1 BY 1 UNTIL I > STU-COUNT
+               IF STU-SCORE-ARR(I) >= 80 THEN
+                   DISPLAY STU-ID-ARR(I)
+               END-IF
+           END-PERFORM.
+           STOP RUN.

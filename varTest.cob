@@ -1,0 +1,13 @@
+       IDENTIFICATION DIVISION.
+       PROGRAM-ID. VARTEST.
+
+       DATA DIVISION.
+       WORKING-STORAGE SECTION.
+       
+      *带货币符号 且自动格式化
+       01 MONEY PIC $Z,ZZZ,ZZZ9.99.
+
+       PROCEDURE DIVISION.
+           MOVE 123123.123 TO MONEY.
+           DISPLAY MONEY.
+           STOP RUN.

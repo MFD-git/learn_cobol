@@ -1,0 +1,33 @@
+IDENTIFICATION DIVISION.
+PROGRAM-ID. ADD_SAMPLE01.
+
+ENVIRONMENT DIVISION.
+CONFIGURATION SECTION.
+DATA DIVISION.
+WORKING-STORAGE SECTION.
+01 WORK-AREA.
+    05 GRADE PIC 9(3).
+PROCEDURE DIVISION.
+    MAIN    SECTION.
+       MOVE 300 TO GRADE.
+
+*>       EVALUATE TRUE
+*>            WHEN GRADE >= 90
+*>                DISPLAY '优秀'
+*>            WHEN GRADE >= 80 AND GRADE <= 89
+*>                DISPLAY '良好'
+*>            WHEN GRADE >= 60 AND GRADE <= 79
+*>                DISPLAY '及格'
+*>            WHEN GRADE < 60
+*>                DISPLAY '不及格'  
+
+      EVALUATE TRUE
+           WHEN GRADE >= 90
+               DISPLAY '优秀'
+           WHEN GRADE >= 80
+               DISPLAY '良好'
+           WHEN GRADE >= 60
+               DISPLAY '及格'
+           WHEN OTHER
+               DISPLAY '不及格'  
+    STOP RUN.
