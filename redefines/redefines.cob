@@ -1,0 +1,21 @@
+       IDENTIFICATION DIVISION.
+       PROGRAM-ID. REDEFINES01.
+
+       DATA DIVISION.
+       WORKING-STORAGE SECTION.
+       
+       01 DATE-NOW PIC 9(8).
+       01 DATE-NOW-R REDEFINES DATE-NOW.
+           05 DATE-YEAR PIC 9(4).
+           05 DATE-MONTH PIC 9(2).
+           05 DATE-DAY PIC 9(2).
+
+       PROCEDURE DIVISION.
+           MOVE 20250716 TO DATE-NOW.
+           DISPLAY DATE-NOW.
+
+           MOVE 2023 TO DATE-YEAR.
+
+           DISPLAY "NEW DATE:" DATE-NOW.
+           
+           STOP RUN.
